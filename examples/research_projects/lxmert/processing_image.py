@@ -33,6 +33,7 @@ class ResizeShortestEdge:
             short_edge_length (list[min, max])
             max_size (int): maximum allowed longest edge length.
         """
+        print('%s __init__ called', self.__classs__.__name__)
         self.interp_method = "bilinear"
         self.max_size = max_size
         self.short_edge_length = short_edge_length

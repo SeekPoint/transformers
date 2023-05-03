@@ -25,6 +25,7 @@ from transformers import LongformerForQuestionAnswering, LongformerModel
 
 class LightningModel(pl.LightningModule):
     def __init__(self, model):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.model = model
         self.num_labels = 2

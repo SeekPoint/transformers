@@ -130,6 +130,7 @@ class BlenderbotSmallConfig(PretrainedConfig):
         eos_token_id=2,
         **kwargs
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(
             pad_token_id=pad_token_id,
             bos_token_id=bos_token_id,

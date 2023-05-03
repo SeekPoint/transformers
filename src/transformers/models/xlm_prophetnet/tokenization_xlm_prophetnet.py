@@ -119,6 +119,7 @@ class XLMProphetNetTokenizer(PreTrainedTokenizer):
         mask_token="[MASK]",
         **kwargs
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(
             bos_token=bos_token,
             eos_token=eos_token,

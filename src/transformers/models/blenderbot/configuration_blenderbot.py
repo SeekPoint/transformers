@@ -131,6 +131,7 @@ class BlenderbotConfig(PretrainedConfig):
         encoder_no_repeat_ngram_size=3,
         **kwargs
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(
             pad_token_id=pad_token_id,
             bos_token_id=bos_token_id,

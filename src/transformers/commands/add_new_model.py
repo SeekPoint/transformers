@@ -49,6 +49,7 @@ class AddNewModelCommand(BaseTransformersCLICommand):
         add_new_model_parser.set_defaults(func=add_new_model_command_factory)
 
     def __init__(self, testing: bool, testing_file: str, path=None, *args):
+        print('%s __init__ called', self.__classs__.__name__)
         self._testing = testing
         self._testing_file = testing_file
         self._path = path

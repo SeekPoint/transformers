@@ -436,6 +436,7 @@ class Box2BoxTransform(object):
             scale_clamp (float): When predicting deltas, the predicted box scaling
                 factors (dw and dh) are clamped such that they are <= scale_clamp.
         """
+        print('%s __init__ called', self.__classs__.__name__)
         self.weights = weights
         if scale_clamp is not None:
             self.scale_clamp = scale_clamp
@@ -553,6 +554,7 @@ class Matcher(object):
                 thus will be considered as false positives while training. All predictions with 0.3 <= iou < 0.5 will be marked with -1 and
                 thus will be ignored. All predictions with 0.5 <= iou will be marked with 1 and thus will be considered as true positives.
         """
+        print('%s __init__ called', self.__classs__.__name__)
         thresholds = thresholds[:]
         assert thresholds[0] > 0
         thresholds.insert(0, -float("inf"))

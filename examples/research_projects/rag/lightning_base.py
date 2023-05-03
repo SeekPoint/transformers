@@ -71,6 +71,7 @@ class BaseTransformer(pl.LightningModule):
         model=None,
         **config_kwargs
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         """Initialize a model, tokenizer and config."""
         super().__init__()
         # TODO: move to self.save_hyperparameters()

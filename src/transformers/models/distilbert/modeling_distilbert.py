@@ -81,6 +81,7 @@ def create_sinusoidal_embeddings(n_pos, dim, out):
 
 class Embeddings(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.word_embeddings = nn.Embedding(config.vocab_size, config.dim, padding_idx=config.pad_token_id)
         self.position_embeddings = nn.Embedding(config.max_position_embeddings, config.dim)
@@ -115,6 +116,7 @@ class Embeddings(nn.Module):
 
 class MultiHeadSelfAttention(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
 
         self.n_heads = config.n_heads
@@ -202,6 +204,7 @@ class MultiHeadSelfAttention(nn.Module):
 
 class FFN(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.dropout = nn.Dropout(p=config.dropout)
         self.chunk_size_feed_forward = config.chunk_size_feed_forward
@@ -226,6 +229,7 @@ class FFN(nn.Module):
 
 class TransformerBlock(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
 
         assert config.dim % config.n_heads == 0
@@ -274,6 +278,7 @@ class TransformerBlock(nn.Module):
 
 class Transformer(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.n_layers = config.n_layers
 
@@ -341,6 +346,7 @@ class DistilBertPreTrainedModel(PreTrainedModel):
 
     def _init_weights(self, module):
         """Initialize the weights."""
+        print('%s _init_weights called', self.__classs__.__name__)
         if isinstance(module, nn.Embedding):
             if module.weight.requires_grad:
                 module.weight.data.normal_(mean=0.0, std=self.config.initializer_range)
@@ -414,6 +420,7 @@ DISTILBERT_INPUTS_DOCSTRING = r"""
 )
 class DistilBertModel(DistilBertPreTrainedModel):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(config)
 
         self.embeddings = Embeddings(config)  # Embeddings
@@ -494,6 +501,7 @@ class DistilBertModel(DistilBertPreTrainedModel):
 )
 class DistilBertForMaskedLM(DistilBertPreTrainedModel):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(config)
 
         self.distilbert = DistilBertModel(config)
@@ -577,6 +585,7 @@ class DistilBertForMaskedLM(DistilBertPreTrainedModel):
 )
 class DistilBertForSequenceClassification(DistilBertPreTrainedModel):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(config)
         self.num_labels = config.num_labels
 

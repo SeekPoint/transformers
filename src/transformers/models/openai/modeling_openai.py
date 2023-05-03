@@ -143,6 +143,7 @@ ACT_FNS = {"relu": nn.ReLU, "silu": silu, "gelu": gelu_new, "swish": silu}
 
 class Attention(nn.Module):
     def __init__(self, nx, n_ctx, config, scale=False):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         n_state = nx  # in Attention: n_state=768 (nx=n_embd)
         # [switch nx => n_state from Block to Attention to keep identical to TF implem]
@@ -231,6 +232,7 @@ class Attention(nn.Module):
 
 class MLP(nn.Module):
     def __init__(self, n_state, config):  # in MLP: n_state=3072 (4 * n_embd)
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         nx = config.n_embd
         self.c_fc = Conv1D(n_state, nx)
@@ -246,6 +248,7 @@ class MLP(nn.Module):
 
 class Block(nn.Module):
     def __init__(self, n_ctx, config, scale=False):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         nx = config.n_embd
         self.attn = Attention(nx, n_ctx, config, scale)
@@ -282,6 +285,7 @@ class OpenAIGPTPreTrainedModel(PreTrainedModel):
     _keys_to_ignore_on_load_missing = [r"position_ids"]
 
     def _init_weights(self, module):
+        print('%s _init_weights called', self.__classs__.__name__)
         """Initialize the weights."""
         if isinstance(module, (nn.Linear, nn.Embedding, Conv1D)):
             # Slightly different from the TF version which uses truncated_normal for initialization
@@ -403,6 +407,7 @@ OPENAI_GPT_INPUTS_DOCSTRING = r"""
 )
 class OpenAIGPTModel(OpenAIGPTPreTrainedModel):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(config)
 
         self.tokens_embed = nn.Embedding(config.vocab_size, config.n_embd)
@@ -533,6 +538,7 @@ class OpenAIGPTModel(OpenAIGPTPreTrainedModel):
 )
 class OpenAIGPTLMHeadModel(OpenAIGPTPreTrainedModel):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(config)
         self.transformer = OpenAIGPTModel(config)
         self.lm_head = nn.Linear(config.n_embd, config.vocab_size, bias=False)
@@ -619,6 +625,7 @@ input sequence).
 )
 class OpenAIGPTDoubleHeadsModel(OpenAIGPTPreTrainedModel):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(config)
 
         config.num_labels = 1
@@ -742,6 +749,7 @@ class OpenAIGPTDoubleHeadsModel(OpenAIGPTPreTrainedModel):
 )
 class OpenAIGPTForSequenceClassification(OpenAIGPTPreTrainedModel):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(config)
         self.num_labels = config.num_labels
         self.transformer = OpenAIGPTModel(config)

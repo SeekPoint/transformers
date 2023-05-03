@@ -142,6 +142,7 @@ class {{cookiecutter.camelcase_modelname}}TokenizerFast(PreTrainedTokenizerFast)
             trim_offsets=True,
             **kwargs
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(
             ByteLevelBPETokenizer(
                 vocab_file=vocab_file,

@@ -111,6 +111,7 @@ class BertJapaneseTokenizer(BertTokenizer):
                 Type of subword tokenizer.
             **mecab_kwargs**: (`optional`) dict passed to `MecabTokenizer` constructor (default None)
         """
+        print('%s __init__ called', self.__classs__.__name__)
         super(BertTokenizer, self).__init__(
             unk_token=unk_token,
             sep_token=sep_token,

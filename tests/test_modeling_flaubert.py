@@ -44,6 +44,7 @@ class FlaubertModelTester(object):
         self,
         parent,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self.parent = parent
         self.batch_size = 13
         self.seq_length = 7

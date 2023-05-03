@@ -447,6 +447,7 @@ class LongformerEmbeddings(nn.Module):
     """
 
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.word_embeddings = nn.Embedding(config.vocab_size, config.hidden_size, padding_idx=config.pad_token_id)
         self.position_embeddings = nn.Embedding(config.max_position_embeddings, config.hidden_size)
@@ -517,6 +518,7 @@ class LongformerEmbeddings(nn.Module):
 
 class LongformerSelfAttention(nn.Module):
     def __init__(self, config, layer_id):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         if config.hidden_size % config.num_attention_heads != 0:
             raise ValueError(
@@ -1089,6 +1091,7 @@ class LongformerSelfAttention(nn.Module):
 # Copied from transformers.models.bert.modeling_bert.BertSelfOutput
 class LongformerSelfOutput(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.dense = nn.Linear(config.hidden_size, config.hidden_size)
         self.LayerNorm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
@@ -1103,6 +1106,7 @@ class LongformerSelfOutput(nn.Module):
 
 class LongformerAttention(nn.Module):
     def __init__(self, config, layer_id=0):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.self = LongformerSelfAttention(config, layer_id)
         self.output = LongformerSelfOutput(config)
@@ -1153,6 +1157,7 @@ class LongformerAttention(nn.Module):
 # Copied from transformers.models.bert.modeling_bert.BertIntermediate
 class LongformerIntermediate(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.dense = nn.Linear(config.hidden_size, config.intermediate_size)
         if isinstance(config.hidden_act, str):
@@ -1169,6 +1174,7 @@ class LongformerIntermediate(nn.Module):
 # Copied from transformers.models.bert.modeling_bert.BertOutput
 class LongformerOutput(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.dense = nn.Linear(config.intermediate_size, config.hidden_size)
         self.LayerNorm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
@@ -1183,6 +1189,7 @@ class LongformerOutput(nn.Module):
 
 class LongformerLayer(nn.Module):
     def __init__(self, config, layer_id=0):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.attention = LongformerAttention(config, layer_id)
         self.intermediate = LongformerIntermediate(config)
@@ -1226,6 +1233,7 @@ class LongformerLayer(nn.Module):
 
 class LongformerEncoder(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.config = config
         self.layer = nn.ModuleList([LongformerLayer(config, layer_id=i) for i in range(config.num_hidden_layers)])
@@ -1312,6 +1320,7 @@ class LongformerEncoder(nn.Module):
 # Copied from transformers.models.bert.modeling_bert.BertPooler
 class LongformerPooler(nn.Module):
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.dense = nn.Linear(config.hidden_size, config.hidden_size)
         self.activation = nn.Tanh()
@@ -1330,6 +1339,7 @@ class LongformerLMHead(nn.Module):
     """Longformer Head for masked language modeling."""
 
     def __init__(self, config):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__()
         self.dense = nn.Linear(config.hidden_size, config.hidden_size)
         self.layer_norm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
@@ -1363,6 +1373,7 @@ class LongformerPreTrainedModel(PreTrainedModel):
 
     def _init_weights(self, module):
         """ Initialize the weights """
+        print('%s _init_weights called', self.__classs__.__name__)
         if isinstance(module, (nn.Linear, nn.Embedding)):
             # Slightly different from the TF version which uses truncated_normal for initialization
             # cf https://github.com/pytorch/pytorch/pull/5617
@@ -1480,6 +1491,7 @@ class LongformerModel(LongformerPreTrainedModel):
     """
 
     def __init__(self, config, add_pooling_layer=True):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(config)
         self.config = config
 

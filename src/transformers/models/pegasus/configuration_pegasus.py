@@ -129,6 +129,7 @@ class PegasusConfig(PretrainedConfig):
         eos_token_id=1,
         **kwargs
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(
             pad_token_id=pad_token_id,
             eos_token_id=eos_token_id,

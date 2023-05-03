@@ -96,6 +96,7 @@ if is_torch_available():
             overwrite_cache=False,
             mode: Split = Split.train,
         ):
+            print('%s __init__ called', self.__classs__.__name__)
             processor = processors[task]()
 
             cached_features_file = os.path.join(
@@ -162,6 +163,7 @@ if is_tf_available():
             overwrite_cache=False,
             mode: Split = Split.train,
         ):
+            print('%s __init__ called', self.__classs__.__name__)
             processor = processors[task]()
 
             logger.info(f"Creating features from dataset file at {data_dir}")

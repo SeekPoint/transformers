@@ -72,6 +72,7 @@ class EncoderDecoderConfig(PretrainedConfig):
     is_composition = True
 
     def __init__(self, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(**kwargs)
         assert (
             "encoder" in kwargs and "decoder" in kwargs

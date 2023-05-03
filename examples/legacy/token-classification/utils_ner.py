@@ -230,6 +230,7 @@ if is_torch_available():
             overwrite_cache=False,
             mode: Split = Split.train,
         ):
+            print('%s __init__ called', self.__classs__.__name__)
             # Load data features from cache or dataset file
             cached_features_file = os.path.join(
                 data_dir,
@@ -300,6 +301,7 @@ if is_tf_available():
             overwrite_cache=False,
             mode: Split = Split.train,
         ):
+            print('%s __init__ called', self.__classs__.__name__)
             examples = token_classification_task.read_examples_from_file(data_dir, mode)
             # TODO clean up all this to leverage built-in features of tokenizers
             self.features = token_classification_task.convert_examples_to_features(

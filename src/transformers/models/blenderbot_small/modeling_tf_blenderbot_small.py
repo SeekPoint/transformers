@@ -117,6 +117,7 @@ class TFBlenderbotSmallLearnedPositionalEmbedding(TFSharedEmbeddings):
     """
 
     def __init__(self, num_embeddings: int, embedding_dim: int, padding_idx: int, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         assert padding_idx is not None, "padding_idx cannot be None"
         super().__init__(num_embeddings, embedding_dim, **kwargs)
 
@@ -143,6 +144,7 @@ class TFBlenderbotSmallAttention(tf.keras.layers.Layer):
         bias: bool = True,
         **kwargs,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(**kwargs)
         self.embed_dim = embed_dim
 

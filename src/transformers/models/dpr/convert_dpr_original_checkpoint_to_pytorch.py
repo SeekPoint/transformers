@@ -35,6 +35,7 @@ def load_states_from_checkpoint(model_file: str) -> CheckpointState:
 
 class DPRState:
     def __init__(self, src_file: Path):
+        print('%s __init__ called', self.__classs__.__name__)
         self.src_file = src_file
 
     def load_dpr_model(self):

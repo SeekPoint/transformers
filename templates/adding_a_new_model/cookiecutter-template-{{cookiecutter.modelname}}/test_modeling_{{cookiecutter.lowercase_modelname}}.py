@@ -70,6 +70,7 @@ class {{cookiecutter.camelcase_modelname}}ModelTester:
             num_choices=4,
             scope=None,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self.parent = parent
         self.batch_size = batch_size
         self.seq_length = seq_length
@@ -550,6 +551,7 @@ class {{cookiecutter.camelcase_modelname}}ModelTester:
         pad_token_id=1,
         bos_token_id=0,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self.parent = parent
         self.batch_size = batch_size
         self.seq_length = seq_length
@@ -875,6 +877,7 @@ class {{cookiecutter.camelcase_modelname}}StandaloneDecoderModelTester:
         eos_token_id=2,
         scope=None,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self.parent = parent
         self.batch_size = batch_size
         self.decoder_seq_length = decoder_seq_length

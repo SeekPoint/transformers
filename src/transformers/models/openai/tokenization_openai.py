@@ -97,6 +97,7 @@ class OpenAIGPTTokenizer(PreTrainedTokenizer):
     model_input_names = ["input_ids", "attention_mask"]
 
     def __init__(self, vocab_file, merges_file, unk_token="<unk>", **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         super().__init__(unk_token=unk_token, **kwargs)
 
         try:

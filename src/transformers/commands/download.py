@@ -35,6 +35,7 @@ class DownloadCommand(BaseTransformersCLICommand):
         download_parser.set_defaults(func=download_command_factory)
 
     def __init__(self, model: str, cache: str, force: bool):
+        print('%s __init__ called', self.__classs__.__name__)
         self._model = model
         self._cache = cache
         self._force = force
