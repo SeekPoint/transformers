@@ -102,6 +102,7 @@ class MinLengthLogitsProcessor(LogitsProcessor):
     """
 
     def __init__(self, min_length: int, eos_token_id: int):
+        print('%s __init__ called', self.__classs__.__name__)
         if not isinstance(min_length, int) or min_length < 0:
             raise ValueError(f"`min_length` has to be a positive integer, but is {min_length}")
 
@@ -128,6 +129,7 @@ class TemperatureLogitsWarper(LogitsWarper):
     """
 
     def __init__(self, temperature: float):
+        print('%s __init__ called', self.__classs__.__name__)
         if not isinstance(temperature, float) or not (temperature > 0):
             raise ValueError(f"`temperature` has to be a strictly positive float, but is {temperature}")
 
@@ -149,6 +151,7 @@ class RepetitionPenaltyLogitsProcessor(LogitsProcessor):
     """
 
     def __init__(self, penalty: float):
+        print('%s __init__ called', self.__classs__.__name__)
         if not isinstance(penalty, float) or not (penalty > 0):
             raise ValueError(f"`penalty` has to be a strictly positive float, but is {penalty}")
 
@@ -180,6 +183,7 @@ class TopPLogitsWarper(LogitsWarper):
     """
 
     def __init__(self, top_p: float, filter_value: float = -float("Inf"), min_tokens_to_keep: int = 1):
+        print('%s __init__ called', self.__classs__.__name__)
         if not isinstance(top_p, float) or (top_p < 0 or top_p > 1.0):
             raise ValueError(f"`top_p` has to be a float > 0 and < 1, but is {top_p}")
 
@@ -220,6 +224,7 @@ class TopKLogitsWarper(LogitsWarper):
     """
 
     def __init__(self, top_k: int, filter_value: float = -float("Inf"), min_tokens_to_keep: int = 1):
+        print('%s __init__ called', self.__classs__.__name__)
         if not isinstance(top_k, int) or top_k <= 0:
             raise ValueError(f"`top_k` has to be a strictly positive integer, but is {top_k}")
 
@@ -281,6 +286,7 @@ class NoRepeatNGramLogitsProcessor(LogitsProcessor):
     """
 
     def __init__(self, ngram_size: int):
+        print('%s __init__ called', self.__classs__.__name__)
         if not isinstance(ngram_size, int) or ngram_size <= 0:
             raise ValueError(f"`ngram_size` has to be a strictly positive integer, but is {ngram_size}")
         self.ngram_size = ngram_size
@@ -309,6 +315,7 @@ class EncoderNoRepeatNGramLogitsProcessor(LogitsProcessor):
     """
 
     def __init__(self, encoder_ngram_size: int, encoder_input_ids: torch.LongTensor):
+        print('%s __init__ called', self.__classs__.__name__)
         if not isinstance(encoder_ngram_size, int) or encoder_ngram_size <= 0:
             raise ValueError(
                 f"`encoder_ngram_size` has to be a strictly positive integer, but is {encoder_ngram_size}"
@@ -351,7 +358,7 @@ class NoBadWordsLogitsProcessor(LogitsProcessor):
     """
 
     def __init__(self, bad_words_ids: Iterable[Iterable[int]], eos_token_id: int):
-
+        print('%s __init__ called', self.__classs__.__name__)
         if not isinstance(bad_words_ids, List) or len(bad_words_ids) == 0:
             raise ValueError(f"`bad_words_ids` has to be a non-emtpy list, but is {bad_words_ids}.")
         if any(not isinstance(bad_word_ids, list) for bad_word_ids in bad_words_ids):
@@ -450,6 +457,7 @@ class PrefixConstrainedLogitsProcessor(LogitsProcessor):
     """
 
     def __init__(self, prefix_allowed_tokens_fn: Callable[[int, torch.Tensor], List[int]], num_beams: int):
+        print('%s __init__ called', self.__classs__.__name__)
         self._prefix_allowed_tokens_fn = prefix_allowed_tokens_fn
         self._num_beams = num_beams
 
@@ -481,6 +489,7 @@ class HammingDiversityLogitsProcessor(LogitsProcessor):
     """
 
     def __init__(self, diversity_penalty: float, num_beams: int, num_beam_groups: int):
+        print('%s __init__ called', self.__classs__.__name__)
         if not isinstance(diversity_penalty, float) or (not diversity_penalty > 0.0):
             raise ValueError("`diversity_penalty` should be a float strictly larger than 0.")
         self._diversity_penalty = diversity_penalty

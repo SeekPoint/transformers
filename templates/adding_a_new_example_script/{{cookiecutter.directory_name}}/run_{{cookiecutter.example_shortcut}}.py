@@ -145,6 +145,7 @@ class DataTrainingArguments:
     )
 
     def __post_init__(self):
+        print('%s __post_init__ called', self.__classs__.__name__)
         if self.dataset_name is None and self.train_file is None and self.validation_file is None:
             raise ValueError("Need either a dataset name or a training/validation file.")
         else:

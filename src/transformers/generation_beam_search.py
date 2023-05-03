@@ -160,6 +160,7 @@ class BeamSearchScorer(BeamScorer):
         num_beam_hyps_to_keep: Optional[int] = 1,
         num_beam_groups: Optional[int] = 1,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self.max_length = max_length
         self.num_beams = num_beams
         self.device = device
@@ -341,6 +342,7 @@ class BeamHypotheses:
         """
         Initialize n-best list of hypotheses.
         """
+        print('%s __init__ called', self.__classs__.__name__)
         self.max_length = max_length - 1  # ignoring bos_token
         self.length_penalty = length_penalty
         self.early_stopping = early_stopping

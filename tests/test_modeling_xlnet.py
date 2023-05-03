@@ -70,6 +70,7 @@ class XLNetModelTester:
         pad_token_id=5,
         num_choices=4,
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self.parent = parent
         self.batch_size = 14
         self.seq_length = 7

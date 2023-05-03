@@ -33,6 +33,7 @@ class RepoObj:
     """
 
     def __init__(self, filename: str, lastModified: str, commit: str, size: int, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         self.filename = filename
         self.lastModified = lastModified
         self.commit = commit
@@ -45,6 +46,7 @@ class S3Obj:
     """
 
     def __init__(self, filename: str, LastModified: str, ETag: str, Size: int, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         self.filename = filename
         self.LastModified = LastModified
         self.ETag = ETag
@@ -53,6 +55,7 @@ class S3Obj:
 
 class PresignedUrl:
     def __init__(self, write: str, access: str, type: str, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         self.write = write
         self.access = access
         self.type = type  # mime-type to send to S3.
@@ -64,6 +67,7 @@ class ModelSibling:
     """
 
     def __init__(self, rfilename: str, **kwargs):
+        print('%s __init__ called', self.__classs__.__name__)
         self.rfilename = rfilename  # filename relative to the model root
         for k, v in kwargs.items():
             setattr(self, k, v)
@@ -84,6 +88,7 @@ class ModelInfo:
         siblings: Optional[List[Dict]] = None,  # list of files that constitute the model
         **kwargs
     ):
+        print('%s __init__ called', self.__classs__.__name__)
         self.modelId = modelId
         self.author = author
         self.downloads = downloads
@@ -98,6 +103,7 @@ class HfApi:
     ALLOWED_S3_FILE_TYPES = ["datasets", "metrics"]
 
     def __init__(self, endpoint=None):
+        print('%s __init__ called', self.__classs__.__name__)
         self.endpoint = endpoint if endpoint is not None else ENDPOINT
 
     def login(self, username: str, password: str) -> str:
@@ -289,6 +295,7 @@ class TqdmProgressFileReader:
     """
 
     def __init__(self, f: io.BufferedReader):
+        print('%s __init__ called', self.__classs__.__name__)
         self.f = f
         self.total_size = os.fstat(f.fileno()).st_size
         self.pbar = tqdm(total=self.total_size, leave=False)
